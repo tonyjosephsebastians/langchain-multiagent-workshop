@@ -2,9 +2,9 @@
 
 ## Introduction
 
-### Welcome to LangChain Academy's Introduction to LangChain course!
+Welcome to LangChain Academy's **Introduction to LangChain** course!
 
-### This repository is the companion to the course located [HERE](https://academy.langchain.com/courses/foundation-introduction-to-langchain-python).
+This repository is the companion to the course located [HERE](https://academy.langchain.com/courses/foundation-introduction-to-langchain-python).
 
 ---
 
@@ -15,7 +15,7 @@
 - The [Chrome](https://www.google.com/chrome/) browser is recommended
 - [git](https://git-scm.com/install/) is recommended
 - A package/project manager: [uv](https://docs.astral.sh/uv/) (recommended) or [pip](https://pypi.org/project/pip/)
-    - note: `uv` is also required in Module 2, Lesson 1 to run the MCP server with `uvx`
+- note: `uv` is also required in Module 2, Lesson 1 to run the MCP server with `uvx`
 - The course requires Python >=3.12, <3.14  If you use `uv`, it will take care of this for you. [More info](#python-virtual-environments)
 
 ### Installation
@@ -23,7 +23,7 @@
 Download the course repository
 ```bash
 # Clone the repo
-git clone https://github.com/langchain-ai/lca-lc-foundations.git
+git clone --depth 1 https://github.com/langchain-ai/lca-lc-foundations.git
 cd lca-lc-foundations
 ```
 
@@ -34,7 +34,14 @@ cp example.env .env
 ```
 
 Edit the .env file to include the keys below for [Models](#model-providers) and optionally [LangSmith](#getting-started-with-langsmith)
+
+- Get an OpenAI API Key [here](https://openai.com/index/openai-api/).  
+- Optional for Module1/Lesson1, get an Anthropic API Key [here](https://console.anthropic.com) and a Google API Key [here](https://ai.google.dev/gemini-api/docs/quickstart).
+- Optional, Create a [LangSmith](https://smith.langchain.com/) account and API Key.  
+
 ```bash
+# Manual installs for checking: uv
+
 # Required
 OPENAI_API_KEY='your_openai_api_key_here'
 TAVILY_API_KEY='your_tavily_api_key_here'
@@ -51,6 +58,7 @@ LANGSMITH_PROJECT=lca-lc-foundation
 # Uncomment the following if you are on the EU instance:
 #LANGSMITH_ENDPOINT=https://eu.api.smith.langchain.com
 ```
+
 
 Make a virtual environment and install dependencies. [More info](#python-virtual-environments)
 
@@ -74,9 +82,9 @@ pip install -r requirements.txt
 
 </details>
 
-### Quick Start Verification
+### Setup Verification
 
-After completing the Setup section, we recommend you run the following command to verify your environment.  [More Info](#environment-verification)
+After completing the Setup section, we recommend you run the following command to verify your environment.
 
 <details open>
 <summary>Using uv</summary>
@@ -96,6 +104,8 @@ python env_utils.py
 ```
 
 </details>
+
+[If the script flags issues, see this section below.](#setup-verification-issues)
 
 ### Run Notebooks [More Info](#development-environment)
 
@@ -172,63 +182,7 @@ This repository contains three Modules that serve as introductions to many of La
 
 ## 📖 Related Resources
 
-### Python Virtual Environments
-
-Managing your Python version is often best done with virtual environments. This allows you to select a Python version for the course independent of the system Python version.
-
-<details open>
-<summary>Using uv (recommended)</summary>
-
-`uv` will install a version of Python compatible with the versions specified in the `pyproject.toml` in the `.venv` directory when running the `uv sync` specified above. It will use this version when invoking with `uv run`. For additional information, please see [uv](https://docs.astral.sh/uv/).
-</details>
-
-<details>
-<summary>Using pyenv + pip</summary>
-
-If you are using pip instead of uv, you may prefer using pyenv to manage your Python versions. For additional information, please see [pyenv](https://github.com/pyenv/pyenv).
-
-```bash
-pyenv install 3.12
-pyenv local 3.12
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-</details>
-
-### Model Providers
-
-If you don't have an OpenAI API key, you can sign up [here](https://openai.com/index/openai-api/). The course primarily uses gpt-5-nano which is very inexpensive.
-You may also obtain additional API keys for [Anthropic](https://console.anthropic.com) or [Google](https://docs.langchain.com/oss/python/integrations/providers/google). These models are only used in the first lesson.
-
-This course has been created using particular models and model providers.  You can use other providers, but you will need to update the API keys in the .env file and make some necessary code changes. LangChain supports many chat model providers. [More Info](https://docs.langchain.com/oss/python/integrations/providers/all_providers).
-
-Tavily is a search provider that returns search results in an LLM-friendly way. They have a generous free tier. [Tavily](https://tavily.com)
-
-### Getting Started with LangSmith
-
-- Create a [LangSmith](https://smith.langchain.com/) account
-- Create a LangSmith API key
-
-<img width="600" alt="LangSmith Dashboard" src="https://github.com/user-attachments/assets/e39b8364-c3e3-4c75-a287-d9d4685caad5" />
-
-<img width="600" alt="LangSmith API Keys" src="https://github.com/user-attachments/assets/2e916b2d-e3b0-4c59-a178-c5818604b8fe" />
-
-- Update the .env file you created with your new LangSmith API Key.
-- Check that LANGSMITH_TRACING is uncommented and set to true.
-
-For more information on LangSmith, see our docs [here](https://docs.langchain.com/langsmith/home).
-
-**Note:** If you enable LangSmith tracing by setting `LANGSMITH_TRACING=true` in your .env file, make sure you have a valid `LANGSMITH_API_KEY` set. The environment verification script (`env_utils.py`) will warn you if tracing is enabled without a valid key.
-
-### Environment Variables
-
-This course uses the [dotenv](https://pypi.org/project/python-dotenv) module to read key-value pairs from the .env file and set them in the environment in the Jupyter notebooks. They do not need to be set globally in your system environment.
-
-**Note:** If you have API keys already set in your system environment, they may conflict with the ones in your .env file. The `env_utils.py` verification script will detect and warn you about such conflicts. By default, `load_dotenv()` does not override existing environment variables.
-
-### Environment Verification
+### Setup Verification Issues
 
 **What the verification procedure checks:**
 - ✅ Python executable location and version (must be >=3.12, <3.14)
@@ -286,6 +240,62 @@ If you see a warning about Python version not satisfying requirements, you need 
 - If using pip: Install Python 3.12 or 3.13 using [pyenv](#python-virtual-environments) or from [python.org](https://www.python.org/downloads/)
 
 </details>
+
+### Python Virtual Environments
+
+Managing your Python version is often best done with virtual environments. This allows you to select a Python version for the course independent of the system Python version.
+
+<details open>
+<summary>Using uv (recommended)</summary>
+
+`uv` will install a version of Python compatible with the versions specified in the `pyproject.toml` in the `.venv` directory when running the `uv sync` specified above. It will use this version when invoking with `uv run`. For additional information, please see [uv](https://docs.astral.sh/uv/).
+</details>
+
+<details>
+<summary>Using pyenv + pip</summary>
+
+If you are using pip instead of uv, you may prefer using pyenv to manage your Python versions. For additional information, please see [pyenv](https://github.com/pyenv/pyenv).
+
+```bash
+pyenv install 3.12
+pyenv local 3.12
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+</details>
+
+### Model Providers
+
+If you don't have an OpenAI API key, you can sign up [here](https://openai.com/index/openai-api/). The course primarily uses gpt-5-nano which is very inexpensive.  If desired, you may also obtain additional API keys for [Anthropic](https://console.anthropic.com) or [Google](https://ai.google.dev/gemini-api/docs/quickstart).
+
+This course has been created using particular models and model providers.  You can use other providers, but you will need to update the API keys in the .env file and make some necessary code changes. LangChain supports many chat model providers. [More Info](https://docs.langchain.com/oss/python/integrations/providers/all_providers).
+
+Tavily is a search provider that returns search results in an LLM-friendly way. They have a generous free tier. [Tavily](https://tavily.com)
+
+### Getting Started with LangSmith
+
+- Create a [LangSmith](https://smith.langchain.com/) account
+- Create a LangSmith API key
+
+<img width="600" alt="LangSmith Dashboard" src="https://github.com/user-attachments/assets/e39b8364-c3e3-4c75-a287-d9d4685caad5" />
+
+<img width="600" alt="LangSmith API Keys" src="https://github.com/user-attachments/assets/2e916b2d-e3b0-4c59-a178-c5818604b8fe" />
+
+- Update the .env file you created with your new LangSmith API Key.
+- Check that LANGSMITH_TRACING is uncommented and set to true.
+
+For more information on LangSmith, see our docs [here](https://docs.langchain.com/langsmith/home).
+
+**Note:** If you enable LangSmith tracing by setting `LANGSMITH_TRACING=true` in your .env file, make sure you have a valid `LANGSMITH_API_KEY` set. The environment verification script (`env_utils.py`) will warn you if tracing is enabled without a valid key.
+
+### Environment Variables
+
+This course uses the [dotenv](https://pypi.org/project/python-dotenv) module to read key-value pairs from the .env file and set them in the environment in the Jupyter notebooks. They do not need to be set globally in your system environment.
+
+**Note:** If you have API keys already set in your system environment, they may conflict with the ones in your .env file. The `env_utils.py` verification script will detect and warn you about such conflicts. By default, `load_dotenv()` does not override existing environment variables.
+
 
 ### Development Environment
 
