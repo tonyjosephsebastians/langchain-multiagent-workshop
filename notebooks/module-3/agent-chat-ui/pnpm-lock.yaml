@@ -68,8 +68,8 @@ importers:
         specifier: ^0.0.4
         version: 0.0.4(next@16.1.7(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
       lodash:
-        specifier: ^4.17.23
-        version: 4.17.23
+        specifier: ^4.18.1
+        version: 4.18.1
       lucide-react:
         specifier: ^0.476.0
         version: 0.476.0(react@19.1.0)
@@ -1194,6 +1194,9 @@ packages:
 
   '@types/node@22.19.15':
     resolution: {integrity: sha512-F0R/h2+dsy5wJAUe3tAU6oqa2qbWY5TpNfL/RGmo1y38hiyO1w3x2jPtt76wmuaJI4DQnOBu21cNXQ2STIUUWg==}
+
+  '@types/node@22.19.17':
+    resolution: {integrity: sha512-wGdMcf+vPYM6jikpS/qhg6WiqSV/OhG+jeeHT/KlVqxYfD40iYJf9/AE1uQxVWFvU7MipKRkRv8NSHiCGgPr8Q==}
 
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
@@ -2478,8 +2481,8 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
-  lodash@4.17.23:
-    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
+  lodash@4.18.1:
+    resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
 
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
@@ -4381,7 +4384,7 @@ snapshots:
 
   '@types/node-fetch@2.6.13':
     dependencies:
-      '@types/node': 22.19.15
+      '@types/node': 22.19.17
       form-data: 4.0.5
     optional: true
 
@@ -4393,6 +4396,11 @@ snapshots:
   '@types/node@22.19.15':
     dependencies:
       undici-types: 6.21.0
+
+  '@types/node@22.19.17':
+    dependencies:
+      undici-types: 6.21.0
+    optional: true
 
   '@types/prismjs@1.26.5': {}
 
@@ -5847,7 +5855,7 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
-  lodash@4.17.23: {}
+  lodash@4.18.1: {}
 
   longest-streak@3.1.0: {}
 
@@ -6648,7 +6656,7 @@ snapshots:
     dependencies:
       clsx: 2.1.1
       eventemitter3: 4.0.7
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
       react-is: 18.3.1
