@@ -1,10 +1,6 @@
 from langchain.agents import create_agent
+from langgraph.checkpoint.memory import InMemorySaver  
 from env_config import get_model_name, raise_model_access_error, require_openai_api_key
-
-
-def get_weather(city: str) -> str:
-    """Get weather for a given city."""
-    return f"It's always sunny in {city}!"
 
 
 def get_final_text(result: dict) -> str:
@@ -21,16 +17,15 @@ def get_final_text(result: dict) -> str:
 def main() -> None:
     require_openai_api_key()
     model_name = get_model_name()
-
     agent = create_agent(
         model=f"openai:{model_name}",
-        tools=[get_weather],
-        system_prompt="You are a helpful assistant",
+        checkpointer=InMemorySaver(),
     )
 
     try:
         result = agent.invoke(
-            {"messages": [{"role": "user", "content": "what is the weather in sf"}]}
+            {"messages": [{"role": "user", "content": "Hi! My name is Bob."}]},
+            {"configurable": {"thread_id": "1"}},
         )
     except Exception as exc:
         raise_model_access_error(model_name, exc)
@@ -40,3 +35,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
